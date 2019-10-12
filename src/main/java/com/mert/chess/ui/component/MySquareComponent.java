@@ -7,14 +7,7 @@ import com.vaadin.flow.component.polymertemplate.Id;
 import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
 import com.vaadin.flow.templatemodel.TemplateModel;
 
-/**
- * Project Edit Component
- *
- * this component is intended to use within the racks visual component, representing the square rack blocks
- * with an occupancy rate and a color code for rack type
- *
- * @author ardarda 06.10.2019
- */
+
 @Tag("my-square-element")
 @HtmlImport("bower_components/my-square-element/my-square-element.html")
 public class MySquareComponent extends PolymerTemplate<TemplateModel>   {
