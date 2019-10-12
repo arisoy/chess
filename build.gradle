@@ -1,0 +1,109 @@
+buildscript {
+	ext {
+		springBootVersion = '2.1.5.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+
+		classpath('se.transmode.gradle:gradle-docker:1.2')
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'application'
+apply plugin: 'jacoco'
+apply plugin: 'docker'
+
+
+group = 'com.mert'
+version = '0.0.1-SNAPSHOT'
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
+
+
+
+repositories {
+	mavenCentral()
+	maven { url "https://repo.spring.io/snapshot" }
+	maven { url "https://repo.spring.io/milestone" }
+	maven { url "http://maven.vaadin.com/vaadin-addons" }
+
+}
+
+
+ext {
+	vaadinVersion = '13.0.8'
+}
+
+application {
+	mainClassName = "com.mert.chess.ChessApplication"
+}
+
+
+dependencies {
+	// Boot
+	compile "org.springframework.boot:spring-boot-starter-web"
+	testImplementation "org.springframework.boot:spring-boot-starter-test"
+
+
+	// Jdbc
+	compile "org.springframework.boot:spring-boot-starter-jdbc"
+
+
+	// Security
+//	implementation "org.springframework.boot:spring-boot-starter-security"
+//	testImplementation "org.springframework.security:spring-security-test"
+
+	// Lombok
+	compileOnly "org.projectlombok:lombok:1.18.2"
+	testCompileOnly "org.projectlombok:lombok:1.18.2"
+	annotationProcessor "org.projectlombok:lombok:1.18.2"
+	testAnnotationProcessor "org.projectlombok:lombok:1.18.2"
+
+	// Vaadin
+	compile "com.vaadin:vaadin-spring-boot-starter"
+
+	// App-layout
+	compile "com.github.appreciated:app-layout-addon:2.0.0"
+
+	testAnnotationProcessor "org.projectlombok:lombok:1.18.2"
+
+	// Vaadin
+	compile "com.vaadin:vaadin-spring-boot-starter"
+
+	// App-layout
+	compile "com.github.appreciated:app-layout-addon:2.0.0"
+
+	// MyBatis
+	//compile "org.mybatis:mybatis-spring:1.2.3"
+	//compile "org.mybatis:mybatis:3.3.0"
+	//compile("org.mybatis.spring.boot:mybatis-spring-boot-starter-test:1.3.2")
+	compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.0.1")
+
+	// BoneCP - Connection Pooling
+	compile "com.jolbox:bonecp:0.8.0.RELEASE"
+
+	// Postgres
+	compile "org.postgresql:postgresql:9.4-1204-jdbc42"
+
+	// Lang
+	compile "org.apache.commons:commons-lang3:3.8"
+
+	compile "org.webjars.bowergithub.gatanaso:multiselect-combo-box:0.0.4"
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "com.vaadin:vaadin-bom:${vaadinVersion}"
+	}
+}
+
