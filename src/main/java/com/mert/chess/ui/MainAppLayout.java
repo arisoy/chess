@@ -13,6 +13,8 @@ import com.github.appreciated.app.layout.entity.DefaultBadgeHolder;
 import com.github.appreciated.app.layout.notification.DefaultNotificationHolder;
 import com.github.appreciated.app.layout.notification.component.AppBarNotificationButton;
 import com.github.appreciated.app.layout.router.AppLayoutRouterLayout;
+import com.mert.chess.domain.Chess;
+import com.mert.chess.ui.view.ChessView;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.icon.VaadinIcon;
@@ -70,12 +72,8 @@ public class MainAppLayout extends AppLayoutRouterLayout {
             .withAppMenu(LeftAppMenuBuilder
                     .get()
                     .addToSection(verticalLayout, HEADER)
-                    .add(new LeftNavigationComponent("Plant", VaadinIcon.BOAT.create(), PlantView.class))
-                    .add(new LeftNavigationComponent("DashBoard", VaadinIcon.ACADEMY_CAP.create(), DashBoardView.class))
-                    .add(new LeftNavigationComponent("User", VaadinIcon.BROWSER.create(), UserView.class))
-                    .add(new LeftNavigationComponent("Address Edit", VaadinIcon.BROWSER.create(), AddressView.class))
-                    .add(new LeftNavigationComponent("Orders", VaadinIcon.BOAT.create(), OrderView.class))
-                    .add(new LeftNavigationComponent("Todo List", VaadinIcon.BULLSEYE.create(), TodolistView.class))
+                    .add(new LeftNavigationComponent("Chess", VaadinIcon.BOAT.create(), ChessView.class))
+                    
                 .build())
             .build();
     return layout;
